@@ -1,0 +1,37 @@
+Xft.dpi:       96
+Xft.antialias: 1
+Xft.hinting:   1
+Xft.hintstyle: hintmedium
+
+URxvt.termName:    rxvt
+URxvt*depth:       32
+URxvt.transparent: false
+URxvt.font:        xft:monospace:size=12
+URxvt.scrollBar:   false
+! URxvt.iconfile:
+
+! Restore Ctrl+Shift+(c|v)
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.iso14755:    false
+URxvt.iso14755_52: false
+
+! Gruber-Darker
+*foreground: #E4E4EF
+*background: #181818
+*color0:     #2E3436
+*color1:     #A40000
+*color2:     #4E9A06
+*color3:     #C4A000
+*color4:     #3465A4
+*color5:     #75507B
+*color6:     #CE5C00
+*color7:     #BABDB9
+*color8:     #555753
+*color9:     #EF2929
+*color10:    #8AE234
+*color11:    #FCE94F
+*color12:    #729FCF
+*color13:    #AD7FA8
+*color14:    #FCAF3E
+*color15:    #EEEEEC
