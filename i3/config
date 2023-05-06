@@ -174,12 +174,11 @@ mode "resize" {
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
-}
 
 bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information $statusbar
 # finds out, if available)
 bar {
-        status_command $statusbar -c ".config/i3/${statusbar}.conf"
+        status_command $statusbar -c ".config/i3/$statusbar.conf"
 }
