@@ -9,4 +9,4 @@
 # set PATH so it includes user's private bin if it exists
 [[ -d "~/.local/bin" ]] && PATH="~/.local/bin:$PATH"
 
-exec pgrep 'startx'     || exec startx
+pgrep 'startx' || exec startx
