@@ -26,7 +26,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-tray
 
 # i3status or i3blocks
-set $statusbar i3status
+set $statusbar $ENV_STATUSBAR
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_statusbar killall -SIGUSR1 $statusbar
