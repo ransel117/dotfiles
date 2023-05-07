@@ -27,7 +27,7 @@
   (tool-bar-mode 0)
   )
 
-(scroll-bar-mode 0)
+(setq-default scroll-bar-mode 0)
 (transient-mark-mode 0)
 (column-number-mode 1)
 (file-name-shadow-mode 1)
