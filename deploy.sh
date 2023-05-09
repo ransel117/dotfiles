@@ -1,28 +1,48 @@
-#!/bin/bash
+#!/bin/sh
 
-SCRIPT_DIR="$(cd "$(dirname "$BASH_SOURCE[0]")" && pwd)"
+# Stolen from herrhotzenplotz
 
-echo $SCRIPT_DIR
+# AUTOMATIC DEPLOY SCRIPT
+# to deploy to the $HOME folder place the files/folders in the homedir/ folder
+# to deploy to the $HOME/.config folder place the files/folders in the config/ folder
+# to deploy to the $HOME/.local/bin folder place the files in the localbin/ folder
 
-DEST_DIR="$HOME"
-# testing
-#DEST_DIR="$SCRIPT_DIR/test"
+INFOTAG="\033[01;36m[INFO]\033[0m"
+LINKTAG="\033[01;32m[LINK]\033[0m"
 
-echo $DEST_DIR
+CONF_FOLDER=".config"
 
-mkdir -p "$DEST_DIR/.config"
+echo "$INFOTAG Checking $HOME links..."
+HOME_FILES=$(find homedir/ -maxdepth 1 -type f -o -type d ! -path homedir/)
+for SRCPATH in $HOME_FILES; do
+    TARGETPATH="$HOME/$(basename $SRCPATH)"
+    [ -L $TARGETPATH ] || (echo -n "$LINKTAG " && ln -vs "$PWD/$SRCPATH" "$TARGETPATH")
+done
 
-EXISTS="file/folder already exists"
+if [ $XDG_CONF_PATH ]; then
+    CONF_TARGET="$XDG_CONF_PATH"
+else
+    CONF_TARGET="$HOME/.config/"
+fi
 
-[[ -f "$DEST_DIR/.bashrc"         ]] && echo "$EXISTS" || ln -s "$SCRIPT_DIR/bashrc"       "$DEST_DIR/.bashrc"
-[[ -f "$DEST_DIR/.bash_profile"   ]] && echo "$EXISTS" || ln -s "$SCRIPT_DIR/bash_profile" "$DEST_DIR/.bash_profile"
-[[ -f "$DEST_DIR/.bash_aliases"   ]] && echo "$EXISTS" || ln -s "$SCRIPT_DIR/bash_aliases" "$DEST_DIR/.bash_aliases"
-[[ -f "$DEST_DIR/.Xresources"     ]] && echo "$EXISTS" || ln -s "$SCRIPT_DIR/Xresources"   "$DEST_DIR/.Xresources"
-[[ -f "$DEST_DIR/.emacs"          ]] && echo "$EXISTS" || ln -s "$SCRIPT_DIR/emacs"        "$DEST_DIR/.emacs"
-[[ -f "$DEST_DIR/.gitconfig"      ]] && echo "$EXISTS" || ln -s "$SCRIPT_DIR/gitconfig"    "$DEST_DIR/.gitconfig"
-[[ -f "$DEST_DIR/.gtkrc-2.0"      ]] && echo "$EXISTS" || ln -s "$SCRIPT_DIR/gtkrc-2.0"    "$DEST_DIR/.gtkrc-2.0"
-[[ -d "$DEST_DIR/.config/i3"      ]] && echo "$EXISTS" || ln -s "$SCRIPT_DIR/i3"           "$DEST_DIR/.config/i3"
-[[ -d "$DEST_DIR/.config/gtk-3.0" ]] && echo "$EXISTS" || ln -s "$SCRIPT_DIR/gtk-3.0"      "$DEST_DIR/.config/gtk-3.0"
-[[ -f "$DEST_DIR/.xinitrc"        ]] && echo "$EXISTS" || ln -s "$SCRIPT_DIR/xinitrc"      "$DEST_DIR/.xinitrc"
+echo "$INFOTAG Checking $CONF_TARGET links..."
+CONF_FILES=$(find config/ -maxdepth 1 -type f -o -type d ! -path config/)
+for SRCPATH in $CONF_FILES; do
+    TARGETPATH="$CONF_TARGET/$(basename $SRCPATH)"
+    [ -L $TARGETPATH ] || (echo -n "$LINKTAG " && ln -vs "$PWD/$SRCPATH" "$TARGETPATH")
+done
 
-ls -lFa "$DEST_DIR"
+if [ -d "$HOME/.local/bin" ]; then
+    echo "$INFOTAG $HOME/.local/bin exists"
+else
+    echo "$INFOTAG Creating $HOME/.local/bin/..."
+    mkdir -p $HOME/.local/bin
+fi
+
+echo "$INFOTAG Checking $HOME/.local/bin links"
+LOCALBIN_FILES=$(find localbin/ -maxdepth 1 -type f -o -type d ! -path localbin/)
+for SRCPATH in $LOCALBIN_FILES; do
+    TARGETPATH="$HOME/.local/bin/$(basename $SRCPATH)"
+    [ -L $TARGETPATH ] || (echo -n "$LINKTAG " && ln -vs "$PWD/$SRCPATH" "$TARGETPATH")
+done
+

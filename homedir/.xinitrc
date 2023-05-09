@@ -1,8 +1,8 @@
 #!/bin/sh
 
-setxkbmap -layout se
+setxkbmap -layout se -option ctrl:nocaps
 
-[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+xrdb -merge -I$HOME ~/.Xresources
 
 [[ -e /tmp/emacs/server ]] || emacs -- daemon &
 

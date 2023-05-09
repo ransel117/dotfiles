@@ -1,5 +1,5 @@
 (require 'package)
-(add-to-list 'package-archives '("melpa"        . "https://melpa.org/packages/")        t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 (package-initialize)
 
@@ -49,6 +49,7 @@
       )
 (setq inhibit-startup-screen t)
 (setq inhibit-startup-buffer-menu nil)
+(setq make-backup-files nil)
 
 (use-package ido-completing-read+)
 (ido-mode 1)
