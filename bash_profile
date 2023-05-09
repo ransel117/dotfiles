@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # used for login shells
 
 # include .bashrc if it exists
@@ -9,4 +11,4 @@
 # set PATH so it includes user's private bin if it exists
 [[ -d "~/.local/bin" ]] && PATH="~/.local/bin:$PATH"
 
-pgrep 'startx' || exec startx
+#pgrep 'startx' || exec startx

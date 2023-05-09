@@ -1,9 +1,7 @@
 (require 'package)
-(add-to-list 'package-archives '("gnu"          . "https://elpa.gnu.org/packages/")     t)
 (add-to-list 'package-archives '("melpa"        . "https://melpa.org/packages/")        t)
-;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
-;;(package-initialize)
+(package-initialize)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -26,8 +24,10 @@
 (when (fboundp #'tool-bar-mode)
   (tool-bar-mode 0)
   )
+(when (fboundp #'scroll-bar-mode)
+  (scroll-bar-mode 0)
+  )
 
-(setq-default scroll-bar-mode 0)
 (transient-mark-mode 0)
 (column-number-mode 1)
 (file-name-shadow-mode 1)
@@ -314,7 +314,8 @@ compilation-error-regexp-alist-alist
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(package-selected-packages
+   '(markdown-mode smex crux move-text editorconfig ethan-wspace magit ido-completing-read+ auto-package-update use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -23,9 +23,6 @@ EXISTS="file/folder already exists"
 [[ -f "$DEST_DIR/.gtkrc-2.0"      ]] && echo "$EXISTS" || ln -s "$SCRIPT_DIR/gtkrc-2.0"    "$DEST_DIR/.gtkrc-2.0"
 [[ -d "$DEST_DIR/.config/i3"      ]] && echo "$EXISTS" || ln -s "$SCRIPT_DIR/i3"           "$DEST_DIR/.config/i3"
 [[ -d "$DEST_DIR/.config/gtk-3.0" ]] && echo "$EXISTS" || ln -s "$SCRIPT_DIR/gtk-3.0"      "$DEST_DIR/.config/gtk-3.0"
-
-if [[ "$1" == "gentoo" ]]; then 
-    [[ -f "$DEST_DIR/.xinitrc"        ]] && echo "$EXISTS" || ln -s "$SCRIPT_DIR/xinitrc"      "$DEST_DIR/.xinitrc"
-fi
+[[ -f "$DEST_DIR/.xinitrc"        ]] && echo "$EXISTS" || ln -s "$SCRIPT_DIR/xinitrc"      "$DEST_DIR/.xinitrc"
 
 ls -lFa "$DEST_DIR"
