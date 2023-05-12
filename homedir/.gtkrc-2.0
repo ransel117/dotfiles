@@ -1,4 +1,3 @@
-# -- THEME AUTO-WRITTEN BY gtk-theme-switch2 DO NOT EDIT
 include "./.themes/gruvbox-dark-gtk/gtk-2.0/gtkrc"
 
 style "user-font"
@@ -7,6 +6,7 @@ style "user-font"
 }
 widget_class "*" style "user-font"
 
-include "./.gtkrc-2.0.mine"
-
-# -- THEME AUTO-WRITTEN BY gtk-theme-switch2 DO NOT EDIT
+gtk-icon-theme-name   = "gruvbox-dark"
+gtk-cursor-theme-name = "gruvbox-dark"
+gtk-theme-name        = "gruvbox-dark"
+gtk-font-name         = "DejaVu Sans Mono 8"
