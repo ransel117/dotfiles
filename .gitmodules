@@ -1,0 +1,3 @@
+[submodule "homedir/.themes/gruvbox-dark-gtk"]
+	path = homedir/.themes/gruvbox-dark-gtk
+	url = git@github.com:jmattheis/gruvbox-dark-gtk.git

@@ -2,8 +2,9 @@
 
 setxkbmap -layout se -option ctrl:nocaps
 
-xrdb -merge -I$HOME ~/.Xresources
+[ -f $HOME/.Xresources ] && xrdb -merge -I$HOME ~/.Xresources
 
-[[ -e /tmp/emacs/server ]] || emacs -- daemon &
+urxvtd -q -o -f &
+[ -e /tmp/emacs/server ] || emacs -- daemon &
 
 exec dbus-launch --exit-with-session i3

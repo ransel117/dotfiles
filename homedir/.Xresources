@@ -6,7 +6,7 @@ Xft.hintstyle: hintmedium
 URxvt.termName:    rxvt
 URxvt*depth:       32
 URxvt.transparent: false
-URxvt.font:        xft:monospace:size=12
+URxvt.font:        xft:DejaVu Sans Mono:size=12
 URxvt.scrollBar:   false
 ! URxvt.iconfile:
 
@@ -16,22 +16,34 @@ URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.iso14755:    false
 URxvt.iso14755_52: false
 
-! Gruber-Darker
-*foreground: #E4E4EF
-*background: #181818
-*color0:     #2E3436
-*color1:     #A40000
-*color2:     #4E9A06
-*color3:     #C4A000
-*color4:     #3465A4
-*color5:     #75507B
-*color6:     #CE5C00
-*color7:     #BABDB9
-*color8:     #555753
-*color9:     #EF2929
-*color10:    #8AE234
-*color11:    #FCE94F
-*color12:    #729FCF
-*color13:    #AD7FA8
-*color14:    #FCAF3E
-*color15:    #EEEEEC
+
+! GRUVBOX DARK
+! hard contrast: *background: #1d2021
+*background: #282828
+! soft contrast: *background: #32302f
+*foreground: #EBDBB2
+! Black + DarkGrey
+*color0:  #282828
+*color8:  #928374
+! DarkRed + Red
+*color1:  #CC241D
+*color9:  #FB4934
+! DarkGreen + Green
+*color2:  #98971A
+*color10: #B8BB26
+! DarkYellow + Yellow
+*color3:  #D79921
+*color11: #FABD2F
+! DarkBlue + Blue
+*color4:  #458588
+*color12: #83A598
+! DarkMagenta + Magenta
+*color5:  #B16286
+*color13: #D3869B
+! DarkCyan + Cyan
+*color6:  #689D6A
+*color14: #8EC07C
+! LightGrey + White
+*color7:  #A89984
+*color15: #EBDBB2
+
