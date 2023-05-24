@@ -1,7 +1,0 @@
-#!/bin/sh
-
-sudo apt-get update       -q
-sudo apt-get upgrade      -qy --fix-broken  --autoremove
-sudo apt-get install      -qy --fix-missing --autoremove
-sudo apt-get autoremove   -qy --fix-broken
-sudo apt-get autoclean    -qy --fix-missing
