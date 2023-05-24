@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ `test yay --version` ]; then
+    yay -Syyuu
+else
+    sudo pacman -Syyuu
+fi
+

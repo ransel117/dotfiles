@@ -3,12 +3,12 @@
 # used for login shells
 
 # include .bashrc if it exists
-[[ -f "~/.bashrc" ]]    && . "~/.bashrc"
+[[ -f "$HOME/.bashrc" ]]    && . "$HOME/.bashrc"
 
 # set PATH so it includes user's private bin if it exists
-[[ -d "~/bin" ]]        && PATH="~/bin:$PATH"
+[[ -d "$HOME/bin" ]]        && PATH="$PATH:$HOME/bin"
 
 # set PATH so it includes user's private bin if it exists
-[[ -d "~/.local/bin" ]] && PATH="~/.local/bin:$PATH"
+[[ -d "$HOME/.local/bin" ]] && PATH="$PATH:$HOME/.local/bin"
 
 pgrep 'startx' || exec startx
