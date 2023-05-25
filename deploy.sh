@@ -74,7 +74,7 @@ done
 $ECHOCMD "$INFOTAG Checking $SSH_TARGET links"
 SSH_FILES=`find $DEFAULT_SRC/ssh/ -maxdepth 1 -type f -o -type d ! -path $DEFAULT_SRC/ssh/`
 for SRCPATH in $SSH_FILES; do
-    TARGETPATH="$SSH_TARGET`basename $SRCPATH`"
+    TARGETPATH="$SSH_TARGET/`basename $SRCPATH`"
     [ -L $TARGETPATH ] || ($ECHOCMD "$LINKTAG " && ln -vs "$PWD/$SRCPATH" "$TARGETPATH")
 done
 
