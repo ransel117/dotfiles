@@ -21,7 +21,6 @@ set $cyan        #8EC07C
 set $lightgrey   #A89984
 set $white       #EBDBB2
 
-
 # win-key (super)
 set $mod Mod4
 
@@ -51,7 +50,7 @@ floating_modifier $mod
 
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
-bindsym $mod+d exec --no-startup-id dmenu_run -nb '$background' -nf '$foreground' -sb '$blue' -sf '$foreground'
+bindsym $mod+d exec --no-startup-id dmenu_run -nb '$black' -nf '$yellow' -sb '$darkblue' -sf '$white'
 
 bindsym $mod+$left        focus left
 bindsym $mod+$down        focus down
