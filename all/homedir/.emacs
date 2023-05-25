@@ -42,15 +42,15 @@
   :config
   (show-paren-mode 1)
   )
-(setq-default display-line-numbers-type 'relative)
-(setq-default font-use-system-font t)
+(setq display-line-numbers-type 'relative)
+(setq font-use-system-font t)
 (setq whitespace-style
       '(face tabs spaces trailing space-before-tab newline indentation empty space-after-tab space-mark tab-mark)
       )
 (setq inhibit-startup-screen t)
 (setq inhibit-startup-buffer-menu nil)
 (setq make-backup-files nil)
-
+(setq kill-buffer-delete-auto-save-files t)
 (use-package ido-completing-read+)
 (ido-mode 1)
 (ido-everywhere 1)
