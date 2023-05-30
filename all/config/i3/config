@@ -1,7 +1,6 @@
 ##############
 #GRUVBOX DARK#
 ##############
-
 set $background  #282828
 set $foreground  #EBDBB2
 set $black       #282828
@@ -20,15 +19,21 @@ set $darkcyan    #689D6A
 set $cyan        #8EC07C
 set $lightgrey   #A89984
 set $white       #EBDBB2
+##############
+#    END     #
+##############
+set $font DejaVu Sans Mono
+
 
 # win-key (super)
 set $mod Mod4
 
-font xft:DejaVu Sans Mono 8
+font xft:$font 8
 
 focus_follows_mouse no
 hide_edge_borders both
 workspace_layout tabbed
+floating_modifier $mod
 
 set $up    i
 set $down  k
@@ -38,7 +43,10 @@ set $right l
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-tray
 
-set $refresh_statusbar killall -SIGUSR1 i3status
+set $lemonbar_opts -f '$font 16' -B 'darkgrey' -F '$foreground'
+
+set $statusbar lemonbar
+set $refresh_statusbar killall -SIGUSR1 $statusbar
 bindsym XF86AudioRaiseVolume  exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@   +10%   && $refresh_statusbar
 bindsym XF86AudioLowerVolume  exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@   -10%   && $refresh_statusbar
 bindsym XF86AudioMute         exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@   toggle && $refresh_statusbar
@@ -46,37 +54,35 @@ bindsym XF86AudioMicMute      exec --no-startup-id pactl set-source-mute @DEFAUL
 bindsym XF86MonBrightnessUp   exec --no-startup-id light -A 5
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
 
-floating_modifier $mod
-
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
-bindsym $mod+d exec --no-startup-id dmenu_run -nb '$black' -nf '$yellow' -sb '$darkblue' -sf '$white'
+bindsym $mod+d exec --no-startup-id dmenu_run -fn '$font-10' -nb '$black' -nf '$yellow' -sb '$darkblue' -sf '$white'
 
-bindsym $mod+$left        focus left
-bindsym $mod+$down        focus down
-bindsym $mod+$up          focus up
-bindsym $mod+$right       focus right
-bindsym $mod+Left         focus left
-bindsym $mod+Down         focus down
-bindsym $mod+Up           focus up
-bindsym $mod+Right        focus right
-bindsym $mod+Shift+$left  move left
-bindsym $mod+Shift+$down  move down
-bindsym $mod+Shift+$up    move up
-bindsym $mod+Shift+$right move right
-bindsym $mod+Shift+Left   move left
-bindsym $mod+Shift+Down   move down
-bindsym $mod+Shift+Up     move up
-bindsym $mod+Shift+Right  move right
-bindsym $mod+h split      h
-bindsym $mod+v split      v
-bindsym $mod+f fullscreen toggle
-bindsym $mod+s            layout   stacking
-bindsym $mod+w            layout   tabbed
-bindsym $mod+e            layout   toggle split
-bindsym $mod+Shift+space  floating toggle
-bindsym $mod+space        focus    mode_toggle
-bindsym $mod+a            focus    parent
+bindsym $mod+$left        focus      left
+bindsym $mod+$down        focus      down
+bindsym $mod+$up          focus      up
+bindsym $mod+$right       focus      right
+bindsym $mod+Left         focus      left
+bindsym $mod+Down         focus      down
+bindsym $mod+Up           focus      up
+bindsym $mod+Right        focus      right
+bindsym $mod+Shift+$left  move       left
+bindsym $mod+Shift+$down  move       down
+bindsym $mod+Shift+$up    move       up
+bindsym $mod+Shift+$right move       right
+bindsym $mod+Shift+Left   move       left
+bindsym $mod+Shift+Down   move       down
+bindsym $mod+Shift+Up     move       up
+bindsym $mod+Shift+Right  move       right
+bindsym $mod+h            split      h
+bindsym $mod+v            split      v
+bindsym $mod+f            fullscreen toggle
+bindsym $mod+s            layout     stacking
+bindsym $mod+w            layout     tabbed
+bindsym $mod+e            layout     toggle      split
+bindsym $mod+Shift+space  floating   toggle
+bindsym $mod+space        focus      mode_toggle
+bindsym $mod+a            focus      parent
 
 set $ws1  "1"
 set $ws2  "2"
@@ -141,14 +147,14 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
-    status_command i3status -c ".config/i3/i3status.conf"
-
+    #status_command i3status -c ".config/i3/i3status.conf"
+    status_command .config/i3/lemonbar.sh | lemonbar -pb $lemonbar_opts
     colors {
         # bar background color
         background $background
         # text color used for blocks that do not have a color specified.
         statusline $yellow
-        # workspaces section            
+        # workspaces section
         #                    border  background text
         focused_workspace    $darkblue $darkblue $white
         inactive_workspace   $black    $black    $yellow
@@ -163,4 +169,3 @@ client.focused          $darkblue $darkblue $white  $purple $darkgrey
 client.focused_inactive $black    $black    $yellow $purple $darkgrey
 client.unfocused        $black    $black    $yellow $purple $darkgrey
 client.urgent           $red      $red      $white  $red    $red
-
